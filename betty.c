@@ -8,9 +8,12 @@
 
 int main(void)
 {
-    char message[] = "Simple shell project\n";
+	const char message[] = "Simple shell project\n";
 
-    write(STDOUT_FILENO, message, sizeof(message) - 1);
+	for (int i = 0; message[i] != '\0'; ++i)
+	{
+	write(STDOUT_FILENO, &message[i], 1);
+	}
 
-    return (0);
+	return (0);
 }
