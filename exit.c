@@ -8,6 +8,6 @@
 
 void exit_shell(void)
 {
-	shell_print("Exiting the shell.\n");
+	shell_print("");
 	exit(EXIT_SUCCESS);
 }
