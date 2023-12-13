@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
-* exec_command - Executes a command.
+* exec_command - Executes a command with arguments.
 * @cmd: The command to be executed.
 *
-* Return:
+* Return: void
 */
 
 void exec_command(const char *cmd)
@@ -19,7 +19,7 @@ void exec_command(const char *cmd)
 	}
 		else if (child_pid == 0)
 	{
-		char *args[128];
+		char *args[MAX_CMD_LENGTH];
 
 		int i = 0;
 
@@ -40,6 +40,7 @@ void exec_command(const char *cmd)
 
 		execvp(args[0], args);
 
+		perror("execvp");
 		shell_print("Error executing command.\n");
 		exit(EXIT_FAILURE);
 	}
