@@ -38,9 +38,9 @@ void exec_command(const char *cmd)
 			exit(EXIT_SUCCESS);
 		}
 
-		execvp(args[0], args);
+		execve(args[0], args);
 
-		perror("execvp");
+		perror("execve");
 		shell_print("Error executing command.\n");
 		exit(EXIT_FAILURE);
 	}
