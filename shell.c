@@ -19,11 +19,11 @@ int main(void)
 			 exit(EXIT_SUCCESS);
 		}
 
-		if (strcmp(command, "exit") == 0)
+		if (custom_strcmp(command, "exit") == 0)
 		{
 			exit_shell();
 		}
-		else if (strcmp(command, "env") == 0)
+		else if (custom_strcmp(command, "env") == 0)
 		{
 			print_env();
 		}

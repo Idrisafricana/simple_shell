@@ -15,7 +15,7 @@ int build_full_path(const char *command, char *full_path)
 
 	while (token != NULL)
 	{
-		snprintf(full_path, MAX_PATH_LENGTH, "%s/%s", token, command);
+		custom_snprintf(full_path, MAX_PATH_LENGTH, "%s/%s", token, command);
 		if (access(full_path, X_OK) == 0)
 		{
 			return (1);
