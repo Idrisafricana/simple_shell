@@ -1,6 +1,5 @@
 #include "shell.h"
 
-
 /**
  * custom_snprintf - Custom implementation of snprintf.
  * @str: Buffer to store the formatted string.
@@ -13,15 +12,14 @@
  */
 int custom_snprintf(char *str, size_t size, const char *format, ...)
 {
-    va_list args;
-    int result;
+	va_list args;
+	int result;
 
-    if (str == NULL || format == NULL)
-        return -1;
+	if (str == NULL || format == NULL)
+		return (-1);
 
-    va_start(args, format);
-    result = vsnprintf(str, size, format, args);
-    va_end(args);
-
-    return result;
+	va_start(args, format);
+	result = vsnprintf(str, size, format, args);
+	va_end(args);
+	return (result);
 }
