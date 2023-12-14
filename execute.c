@@ -44,7 +44,6 @@ void execute_child(const char *cmd)
 
 	char *token = strtok((char *)cmd, " ");
 
-<<<<<<< HEAD
 	while (token != NULL)
 	{
 		args[i++] = token;
@@ -56,13 +55,6 @@ void execute_child(const char *cmd)
 	{
 		shell_print("Empty command (Ctrl+D) detected. Exiting.\n");
 		exit(EXIT_SUCCESS);
-=======
-		execve(args[0], args);
-
-		perror("execve");
-		shell_print("Error executing command.\n");
-		exit(EXIT_FAILURE);
->>>>>>> a8d6c13090e62327a570890747db745b83f8c9d4
 	}
 
 	custom_strcpy(full_path, "");
