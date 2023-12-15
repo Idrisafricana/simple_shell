@@ -29,7 +29,7 @@ void	startMyshell(void)
 	while (1)
 	{
 
-		write(STDOUT_FILENO, "Kel&Afia$ ", 11); /*Display the shell prompt*/
+		write(STDOUT_FILENO, "easydris$ ", 10); /*Display the shell prompt*/
 
 		numRead = getline(&prompt, &size_prompt, stdin); /*Read user input*/
 		if (numRead == -1)
