@@ -1,21 +1,5 @@
-0x16. C - Simple Shell
+Simple Shell Project
 
-//Learning Objectives
+Introduction Welcome to the Simple Shell Project! This project aims to create a basic shell program where users can enter commands for execution. The shell will parse these commands, execute them in child processes, and display the results to the user. This project is a collaborative effort been Idris and Ismail.
 
-//At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
-
-//General
-//Who designed and implemented the original Unix operating system
-//Who wrote the first version of the UNIX shell
-//Who invented the B programming language (the direct predecessor to the C programming language)
-//Who is Ken Thompson
-//How does a shell work
-//What is a pid and a ppid
-//How to manipulate the environment of the current process
-//What is the difference between a function and a system call
-//How to create processes
-//What are the three prototypes of main
-//How does the shell use the PATH to find the programs
-//How to execute another program with the execve system call
-//How to suspend the execution of a process until one of its children terminates
-//What is EOF / “end-of-file”?
+Features Command Execution: Users can enter various shell commands, and the program will execute them. Tokenization: User input is tokenized into individual commands and arguments for proper execution. Error Handling: The shell handles errors such as command not found, fork failure, and memory allocation issues. User-Friendly Interface: The shell provides a simple and intuitive interface for users to interact with the system.
