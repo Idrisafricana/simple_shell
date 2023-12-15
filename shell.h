@@ -1,35 +1,40 @@
 #ifndef SHELL_H
-#define SHELL_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stddef.h>
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdbool.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-
-#define MAX_PATH_LENGTH 1024
-#define MAX_CMD_LENGTH 128
-
+# define SHELL_H
+# include <limits.h>
+# include <stddef.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/wait.h>
+# include <unistd.h>
 extern char **environ;
 
-void display_prompt(void);
-void shell_print(const char *string);
-int input_command(char *command, size_t size);
-void exec_command(const char *cmd);
-void exit_shell(void);
-void print_env(void);
-int token_command(const char *cmd, char *args[]);
-size_t parse_args(const char *cmd, char *args[], size_t max_args);
-int build_full_path(const char *command, char *full_path);
-void execute_child(const char *cmd);
-char *custom_strcpy(char *dest, const char *src);
-int custom_snprintf(char *str, size_t size, const char *format, ...);
-int custom_strcmp(const char *str1, const char *str2);
+void startMyshell(void);
+ssize_t readUserInput(char **args, size_t *size_args);
+void writeError(char *input);
+void writeExitError(char *nomber);
+void freeArgs(char **args);
+void executeCommands(char **args, char **envp, int *stat);
+int findFullPath(char *prompt, char **full_path);
+void waitChildprocess(int *stat);
+char *_getenv(const char *path);
+void printEnviron(void);
+int main(void);
+void nonInteractMode(char *token, int *status);
+char **funcTokenize(char *str, char *delim);
+void setEnvironmentVariable(char *variable,  char *value);
 
+void unsetEnvironmentVariable(char *variable);
 
+void funcExitStatus(int stat, char **args, char **token, int *status);
 
-#endif /**SHELL_H*/
+void handleCdCommand(char **args, int *stat, char **previousDir,
+				char *cwd);
+void getPromptFail(char *prompt);
+
+char *_strdup(const char *src);
+int _strlen(const char *str);
+int _strcmp(char *s1, char *s2);
+int _atoi(char *s);
+
+#endif
