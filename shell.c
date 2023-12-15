@@ -1,37 +1,41 @@
 #include "shell.h"
 
 /**
- * main - Entry point for the program.
+ * main - Entry point of the shell program
  *
- * Return: Always 0.
+ * Description: This function is the entry point of the shell program.
+ * It reads user input and processes the commands either interactively
+ * or in non-interactive mode based on whether the standard input is a TTY.
+ *
+ * Return: Always 0 to indicate successful execution.
  */
-
 int main(void)
 {
-	char command[MAX_CMD_LENGTH];
+	size_t size_prompt;
 
-	while (true)
+	char *prompt;
+
+	int status;
+
+	size_prompt = 0;
+
+	prompt = NULL;
+
+	status = 0;
+
+	if (!isatty(0))
 	{
-		display_prompt();
-		if (input_command(command, sizeof(command)) == EOF)
+		while (getline(&prompt, &size_prompt, stdin) != -1)
 		{
-			shell_print("");
-			 exit(EXIT_SUCCESS);
+			nonInteractMode(prompt, &status);
 		}
-
-		if (custom_strcmp(command, "exit") == 0)
+		if (prompt)
 		{
-			exit_shell();
+			free(prompt);
+			prompt = NULL;
 		}
-		else if (custom_strcmp(command, "env") == 0)
-		{
-			print_env();
-		}
-		else
-		{
-			exec_command(command);
-		}
+		return (status);
 	}
-
+	startMyshell();
 	return (0);
 }
