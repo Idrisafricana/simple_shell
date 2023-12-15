@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
 		if (ret == END_OF_FILE || ret == EXIT)
 		{
 			if (ret == END_OF_FILE)
-				write(STDOUT_FILENO, new_line, 2);
+				write(STDOUT_FILENO, new_line, 1);
 			free_env();
 			free_alias_list(aliases);
 			exit(*exe_ret);
